@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			people:[],
 			demo: [
 				{
 					title: "FIRST",
@@ -19,11 +20,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+
+			//WOLOLO 1
+			loadSomeData: async () => {
+		await fetch('https://swapi.dev/api/people')
+		.then(response => response.json())
+		.then(data => {console.log(data.results)
+			setStore({people:data.results})
+		})
+		.catch(error => console.log("Error Loco", error))
 			},
+// WOLOLO 2
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

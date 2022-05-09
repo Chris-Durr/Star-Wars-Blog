@@ -1,3 +1,12 @@
 body {
-    background-color: rgb(31, 28, 28);
+    background-image: url("https://images.alphacoders.com/107/107763.jpg");
+    background-size: 100% auto;
+}
+#cardheader{
+    font-style: italic;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    background-color: black;
+    color: whitesmoke;
 }

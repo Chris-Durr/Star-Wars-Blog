@@ -5,7 +5,7 @@ import { getState } from "../store/flux";
 import { Context } from "../store/appContext";
 
 
-export const Carta=(props)=>{
+export const PlanetasCard=(props)=>{
   const {store, action} = useContext(Context);
 
     return <div key={props.key} className = "d-flex justify-content-center">
@@ -17,9 +17,7 @@ export const Carta=(props)=>{
     <Card.Subtitle></Card.Subtitle>
     <Card.Text>
     </Card.Text>
-    <Link to={'/personaje/'+props.i}>
     <Button variant="primary">More Info</Button>
-    </Link>
   </Card.Body>
 </Card>
 </div>

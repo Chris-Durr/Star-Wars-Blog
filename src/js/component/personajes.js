@@ -11,7 +11,7 @@ export const Personajes = ()=>{
 
     return <div className = "d-flex justify-content-center">
 
-<Card style={{ width: '18rem' }}>
+<Card id="cartapersonajes" style={{ width: '18rem' }}>
   <Card.Header id="cardheader">{store.people[parametro.index]?.name}</Card.Header>
   <ListGroup variant="flush">
     <ListGroup.Item>Gender: {store.people[parametro.index]?.gender}</ListGroup.Item>
@@ -20,7 +20,6 @@ export const Personajes = ()=>{
     <ListGroup.Item>Eye color: {store.people[parametro.index]?.eye_color}</ListGroup.Item>
     <ListGroup.Item>Birth year: {store.people[parametro.index]?.birth_year}</ListGroup.Item>
   </ListGroup>
-  <Button variant="danger">Favorites</Button>
   <Link to="/">
   <Button variant="dark">Go back</Button>
   </Link>

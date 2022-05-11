@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			favoritos: [],
 			people:[],
 			fotos : [
 				"https://starwars-visualguide.com/assets/img/characters/1.jpg", // Luke
@@ -14,27 +15,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"https://starwars-visualguide.com/assets/img/characters/9.jpg", // Biggs 
 				"https://starwars-visualguide.com/assets/img/characters/10.jpg", // Obi-Wan
 			],
-			planets:[],
-			pfotos:[
-				"https://starwars-visualguide.com/assets/img/planets/1.jpg", // Luke
-				"https://starwars-visualguide.com/assets/img/planets/2.jpg", // C3Po
-				"https://starwars-visualguide.com/assets/img/planets/3.jpg", // R2-D2
-				"https://starwars-visualguide.com/assets/img/characters/4.jpg", // Darth Vader
-				"https://starwars-visualguide.com/assets/img/characters/5.jpg", // Leia Organa
-				"https://starwars-visualguide.com/assets/img/characters/6.jpg", // Owen Lars
-				"https://starwars-visualguide.com/assets/img/characters/7.jpg", // Beru
-				"https://starwars-visualguide.com/assets/img/characters/8.jpg", // R5-D4
-				"https://starwars-visualguide.com/assets/img/characters/9.jpg", // Biggs 
-				"https://starwars-visualguide.com/assets/img/characters/10.jpg", // Obi-Wan
-
-			],
 			
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
+
 
 			//WOLOLO 1
 			loadSomeData: async () => {
@@ -45,15 +29,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 		})
 		.catch(error => console.log("Error Loco", error))
 			},
-			loadSomePlanets: async () => {
-				await fetch('https://swapi.dev/api/planets')
-				.then(response => response.json())
-				.then(data => {console.log(data.results)
-					setStore({planets:data.results})
-				})
-				.catch(error => console.log("Error Planetoide", error))
-					},
+			
 // WOLOLO 2
+
+			// Añadir a favoritos
+			addFav : (objeto) => {
+				const store = getStore();	
+				setStore({favoritos:[...store.favoritos,objeto]})	
+				
+			},
+
+			removFav: favorito => {
+				setStore({
+					favoritos: getStore().favoritos.filter(function(name, index) {
+						if (favorito.id !== name.id) {
+							return name;
+						}
+					})
+				});
+
+				 
+				 },
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
